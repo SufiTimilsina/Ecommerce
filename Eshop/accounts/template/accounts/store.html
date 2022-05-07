@@ -1,0 +1,29 @@
+{% extends 'accounts/index.html' %}
+{% load static %}
+{% block content %}
+        <div class="card bg-dark text-white">
+         <img src="{% static 'images/BASS.png' %}" class="card-img" alt="shopping center">
+         <div class="card-img-overlay">
+			 <a href="{% url 'login' %}"class="btn btn-warning" style="margin:40% 20%;">SHOP NOW</a>
+         </div>
+         </div>
+      <br>
+	<h3>Our Products</h3>
+	<div class="row">
+
+		{% for product in products %}
+		<div class="col-lg-4">
+			<img class="thumbnail" src="{{product.image_url}}">
+			<div class="box-element product">
+				<h6><strong>{{product.name}}</strong></h6>
+				<hr>
+
+				<button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+				<h4 style="display: inline-block; float: right"><strong>Rs{{product.price}}</strong></h4>
+
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+{% endblock content %}
